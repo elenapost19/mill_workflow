@@ -1,0 +1,43 @@
+---
+title: "ep_workflow"
+format: html
+editor: visual
+---
+
+## PAckages
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+```
+## Data Import
+```{r}
+claims <- read_csv("claims.csv")
+claims
+
+```
+## Data Cleaning
+```{r}
+claims_clean <- claims %>%
+filter(DEPARTMENTID >= 6L & DEPARTMENTID <= 20L)
+```
+
+## Data Visualizations
+```{r}
+ggplot(claims_clean) +
+  aes(x = DEPARTMENTID) +
+  geom_histogram(bins = 30L, fill = "#112446") +
+  theme_minimal()
+```
+
+
+```{r}
+dv1 <- ggplot(claims_clean) +
+  aes(x = DEPARTMENTID) +
+  geom_histogram(bins = 30L, fill = "#112446") +
+  theme_minimal()
+dv1
+```
